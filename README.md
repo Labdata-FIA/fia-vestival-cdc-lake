@@ -10,14 +10,10 @@
 * Docker-Compose
 
 
-# Instalação Kafka 
-
-[LAB KAFKA](../lab-kafka/README.md)
-
-
 ## Kafka Connect
 
-![Exemplo Kafka Conect](../content/kafka-connect-minio_b.png)
+![Exemplo Kafka Conect](content/kafka-connect-minio_b.png)
+
 
 
 ### Realizando download dos plugins dos conectores
@@ -25,7 +21,7 @@
 
 Criando a imagem junto com o plugin do Debezium Postgres
 
-![Exemplo Kafka Conect](../content/kafka-connect-imagem.png)
+![Exemplo Kafka Conect](content/kafka-connect-imagem.png)
 
 
 
@@ -88,17 +84,17 @@ Acesso para o PgAdmin http://localhost:5433/
 * password: postgres
 
 ### Tela de login do PgAdmin
-![Exemplo Kafka Conect](../content/login-pgadmin.png)
+![Exemplo Kafka Conect](content/login-pgadmin.png)
 
 
 ### Inserindo um server
-![Exemplo Kafka Conect](../content/add-server.png)
+![Exemplo Kafka Conect](content/add-server.png)
 
 ### Configurando o server
-![Exemplo Kafka Conect](../content/conect-pgadmin.png)
+![Exemplo Kafka Conect](content/conect-pgadmin.png)
 
 ### ...Se tudo deu certo o banco de exemplo com suas tabelas
-![Exemplo Kafka Conect](../content/tabelas.png)
+![Exemplo Kafka Conect](content/tabelas.png)
 
 ### Criando os Conectores
 
@@ -167,7 +163,7 @@ Vamos inserir alguns registros nas tabelas e listar os tópicos do Kafka
 ### Inserir um registro na tabela `inventory.products`
 
 
-![Exemplo Kafka Conect](../content/insert.png)
+![Exemplo Kafka Conect](content/insert.png)
 
 > Para entrar nos scripts, botão direito na tabela clica em `Query Tool`
 
@@ -223,11 +219,11 @@ Acesso para o MinIO http://localhost:9001/login
 
 ### Configurando o MinIO
 
-![MinIO](../content/minio-01.png)
-![MinIO](../content/minio-02.png)
-![MinIO](../content/minio-04.png)
-![MinIO](../content/minio-05.png)
-![MinIO](../content/minio-06.png)
+![MinIO](content/minio-01.png)
+![MinIO](content/minio-02.png)
+![MinIO](content/minio-04.png)
+![MinIO](content/minio-05.png)
+![MinIO](content/minio-06.png)
 
 
 Instalando o conector do MinIO

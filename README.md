@@ -29,8 +29,9 @@ docker image build -t <<usuario>>/kafka-connet-fia-verao:1.0.1  -f Dockerfile .
 ```
 
 > [!IMPORTANT]
-> OPCIONAL - Vamos enviar a imagem para o dockerhub ??
+> Opcional - Vamos enviar a imagem para o dockerhub ??
 > https://hub.docker.com/
+> /var/lib/postgresql/data/postgresql.conf
 
 ```
 docker login
@@ -102,7 +103,7 @@ https://docs.confluent.io/platform/current/connect/references/restapi.html
 # Configuração
 
 
-Criando o conector PostGres
+Criando o conector PostGreSql
 
 ```
 curl -X PUT -d @conector-postgres.json http://localhost:8083/connectors/connector-postgres/config -H 'Content-Type: application/json' -H 'Accept: application/json'
@@ -175,7 +176,6 @@ Listando os tópicos
 docker exec -it kafka-broker /bin/bash
 kafka-topics --bootstrap-server localhost:9092 --list 
 ```
-
 
 
 *Consumindo mensagem postgres.inventory.products Datasource Postgres*

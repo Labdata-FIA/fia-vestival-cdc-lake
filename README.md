@@ -5,7 +5,7 @@
 > **As configurações dos Laboratórios é puramente para fins de desenvolvimento local e estudos**
 
 
-## Pré-requisitos?
+## 💻 Pré-requisitos
 * Docker
 * Docker-Compose
 
@@ -24,21 +24,17 @@ Criando a imagem junto com o plugin do Debezium Postgres
 ![Exemplo Kafka Conect](content/kafka-connect-imagem.png)
 
 
-
+```
+docker image build -t <<usuario>>/kafka-connet-fia-verao:1.0.1  -f Dockerfile . 
 ```
 
-cd lab-kafka-connect
-
-docker image build -t <<usuario>>/kafka-connet-debezium-lab:v213  -f Dockerfile .
- 
-```
-
-OPCIONAL - Vamos enviar a imagem para o dockerhub ??
-https://hub.docker.com/
+> [!IMPORTANT]
+> OPCIONAL - Vamos enviar a imagem para o dockerhub ??
+> https://hub.docker.com/
 
 ```
 docker login
-docker image push <<usuario>>/kafka-connet-debezium-lab:v213
+docker image push <<usuario>>/kafka-connet-fia-verao:1.0.1
 ```
 
 > As imagens customizadas encontra-se no https://hub.docker.com/
@@ -46,15 +42,11 @@ docker image push <<usuario>>/kafka-connet-debezium-lab:v213
 
 Imagem criada? ...mas antes
 
-Altere o arquivo ambiente/docker-compose.yaml da imagem criada no serviço `connect`
+Altere o arquivo `docker-compose.yaml` da imagem criada no serviço `connect`
 
-
-No diretório `/lab-eda/ambiente` execute o comando abaixo
 
 ```
-cd ../lab-eda/ambiente/
-
-docker-compose up -d grafana prometheus jmx-kafka-broker zookeeper kafka-broker zoonavigator akhq connect postgres pgadmin minio mc
+docker-compose up -d zookeeper kafka-broker akhq connect postgres pgadmin minio mc
 
 docker container ls
 ```
@@ -66,6 +58,11 @@ docker exec -it kafkaConect curl  http://localhost:8083/connector-plugins
 ```
 
 ## Configurando o Conector Postgres
+
+> [!IMPORTANT]
+> Configuração do PostgreSql para replicação
+
+![Configuração PostGreSql](content/postgresql-replication.png)
 
 
 ### Provisionando Banco de dados Postgres e a ferramenta PgAdmin
@@ -102,12 +99,12 @@ Acesso para o PgAdmin http://localhost:5433/
 https://docs.confluent.io/platform/current/connect/references/restapi.html
 
 
+# Configuração
+
+
 Criando o conector PostGres
 
 ```
-
- cd ../../lab-kafka-connect/
-
 curl -X PUT -d @conector-postgres.json http://localhost:8083/connectors/connector-postgres/config -H 'Content-Type: application/json' -H 'Accept: application/json'
 
 
@@ -149,7 +146,6 @@ docker exec -it kafkaConect curl http://localhost:8083/connectors/connector-post
 Vamos tirar o comentario do conector no serviço akhq do arquivo docker-compose caso ainda o tenha.
 
 ```
-cd ../lab-eda/ambiente/
 docker-compose up -d akhq
 ```
 
@@ -231,7 +227,6 @@ Instalando o conector do MinIO
 > Não esqueçam de mudar os campos  `aws.access.key.id` e `aws.secret.access.key` do arquivo `conector-minio.json`
 
 ```
-cd ../../lab-kafka-connect/
 
 curl -X PUT -d @conector-minio.json http://localhost:8083/connectors/connector-minio/config -H 'Content-Type: application/json' -H 'Accept: application/json'
 

@@ -6,7 +6,7 @@ load_dotenv()
 
 # Configurações do Kafka
 KAFKA_CONFIG = {
-    'bootstrap.servers': os.getenv('KAFKA_BOOTSTRAP_SERVERS', 'localhost:9092'),
+    'bootstrap.servers': os.getenv('KAFKA_BOOTSTRAP_SERVERS', 'kafka-broker:29092'),
     'group.id': os.getenv('KAFKA_GROUP_ID', 'default-group'),
     'auto.offset.reset': os.getenv('KAFKA_AUTO_OFFSET_RESET', 'earliest'),
 }

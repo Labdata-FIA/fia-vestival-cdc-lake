@@ -16,30 +16,17 @@
 
 
 
-### Realizando download dos plugins dos conectores
+### Realizando download dos plugins para os conectores
 
 
 Criando a imagem junto com o plugin do Debezium Postgres
 
-![Exemplo Kafka Conect](content/kafka-connect-imagem.png)
+![Exemplo Kafka Conect](content/kafka-connect-minio_c.png)
 
 
 ```bash
 docker image build -t <<usuario>>/kafka-connet-fia-verao:1.0.1  -f Dockerfile . 
 ```
-
-> [!IMPORTANT]
-> Opcional - Vamos enviar a imagem para o dockerhub ??
-> https://hub.docker.com/
-> /var/lib/postgresql/data/postgresql.conf
-
-```bash
-docker login
-docker image push <<usuario>>/kafka-connet-fia-verao:1.0.1
-```
-
-> As imagens customizadas encontra-se no https://hub.docker.com/
-
 
 Imagem criada? ...mas antes
 
@@ -66,6 +53,8 @@ docker exec -it kafkaConect curl  http://localhost:8083/connector-plugins
 
 ```sql
 SHOW config_file;
+SHOW wal_level;
+SHOW max_replication_slots;
 ```
 
 ### Provisionando Banco de dados Postgres e a ferramenta PgAdmin
@@ -143,15 +132,6 @@ Verificando o status dos conectores
 docker exec -it kafkaConect curl http://localhost:8083/connectors/connector-postgres/status
 
 ```
-
-### E o Akhq ?
-
-Vamos tirar o comentario do conector no serviço akhq do arquivo docker-compose caso ainda o tenha.
-
-```bash
-docker-compose up -d akhq
-```
-
 
 ### Testando o Conector
 
@@ -274,13 +254,13 @@ kafka-console-consumer --bootstrap-server localhost:9092 --topic sink-products -
 
 
 ```bash
-docker build -t kafka-minio-consumer .
+docker build -t kafka-minio-consumer ./app-python
 
 docker compose up -d kafka-minio-consumer
 
 ```
 
-## Gerando insert na tabela
+## Gerando comando insert na tabela
 
 ```sql
 INSERT INTO inventory.products(	id, name, description, weight)

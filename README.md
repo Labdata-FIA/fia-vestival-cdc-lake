@@ -12,7 +12,7 @@
 
 ## Kafka Connect
 
-![Exemplo Kafka Conect](content/kafka-connect-minio_b.png)
+![Exemplo Kafka Conect](content/kafka-connect-minio_c.png)
 
 
 
@@ -21,7 +21,7 @@
 
 Criando a imagem junto com o plugin do Debezium Postgres
 
-![Exemplo Kafka Conect](content/kafka-connect-minio_c.png)
+![Exemplo Kafka Conect](content/kafka-connect-imagem.png)
 
 
 ```bash

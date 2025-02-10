@@ -248,9 +248,9 @@ kafka-console-consumer --bootstrap-server localhost:9092 --topic sink-products -
 ```
 
 
-### Consumindo mensagens pelo Python
+## Consumindo mensagens pelo Python
 
-## Gerar a imagem para o consumidor
+### Gerar a imagem para o consumidor
 
 
 ```bash
@@ -260,7 +260,7 @@ docker compose up -d kafka-minio-consumer
 
 ```
 
-## Gerando comando insert na tabela
+### Gerando comando insert na tabela
 
 ```sql
 INSERT INTO inventory.products(	id, name, description, weight)
